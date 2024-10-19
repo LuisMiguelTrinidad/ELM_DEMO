@@ -1,0 +1,42 @@
+{
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "tailwindCSS.includeLanguages": {
+    "elm": "html"
+  },
+  "[elm]": {
+    "tailwindCSS.experimental.classRegex": [
+      "\\bclass[\\s(<|]+\"([^\"]*)\"",
+      "\\bclass[\\s(]+\"[^\"]*\"[\\s+]+\"([^\"]*)\"",
+      "\\bclass[\\s<|]+\"[^\"]*\"\\s*\\+{2}\\s*\" ([^\"]*)\"",
+      "\\bclass[\\s<|]+\"[^\"]*\"\\s*\\+{2}\\s*\" [^\"]*\"\\s*\\+{2}\\s*\" ([^\"]*)\"",
+      "\\bclass[\\s<|]+\"[^\"]*\"\\s*\\+{2}\\s*\" [^\"]*\"\\s*\\+{2}\\s*\" [^\"]*\"\\s*\\+{2}\\s*\" ([^\"]*)\"",
+      "\\bclassList[\\s\\[\\(]+\"([^\"]*)\"",
+      "\\bclassList[\\s\\[\\(]+\"[^\"]*\",\\s[^\\)]+\\)[\\s\\[\\(,]+\"([^\"]*)\"",
+      "\\bclassList[\\s\\[\\(]+\"[^\"]*\",\\s[^\\)]+\\)[\\s\\[\\(,]+\"[^\"]*\",\\s[^\\)]+\\)[\\s\\[\\(,]+\"([^\"]*)\""
+    ]
+  },
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#9edc6a",
+    "activityBar.background": "#9edc6a",
+    "activityBar.foreground": "#15202b",
+    "activityBar.inactiveForeground": "#15202b99",
+    "activityBarBadge.background": "#4a89d5",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "commandCenter.border": "#15202b99",
+    "sash.hoverBorder": "#9edc6a",
+    "statusBar.background": "#83d241",
+    "statusBar.foreground": "#15202b",
+    "statusBarItem.hoverBackground": "#6ab52b",
+    "statusBarItem.remoteBackground": "#83d241",
+    "statusBarItem.remoteForeground": "#15202b",
+    "titleBar.activeBackground": "#83d241",
+    "titleBar.activeForeground": "#15202b",
+    "titleBar.inactiveBackground": "#83d24199",
+    "titleBar.inactiveForeground": "#15202b99"
+  },
+  "peacock.color": "#83d241",
+  "editor.fontFamily": "'Fira Code',monospace",
+  "editor.fontLigatures": true
+}

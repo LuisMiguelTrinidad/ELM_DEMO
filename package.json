@@ -1,0 +1,38 @@
+{
+  "name": "elmish",
+  "version": "1.0.0",
+  "description": "A personalized Elm template powered by Vite",
+  "main": "src/index.js",
+  "scripts": {
+    "postinstall": "elm-tooling install",
+    "elm:dev": "elm reactor",
+    "elm:build": "elm make src/Main.elm --output dist/elm.js",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "elm-test-rs",
+    "review": "elm-review",
+    "format": "elm-format .",
+    "repl": "elm repl"
+  },
+  "keywords": [
+    "elm",
+    "functional",
+    "vite",
+    "template"
+  ],
+  "author": "LuisMiguelTrinidad",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "elm-review": "^2.10.2",
+    "elm-tooling": "^1.14.0",
+    "postcss": "^8.4.27",
+    "tailwindcss": "^3.3.3",
+    "vite": "^4.4.7",
+    "vite-plugin-elm": "^2.8.0"
+  },
+  "dependencies": {
+    "elm-test": "^0.19.1-revision12"
+  }
+}
