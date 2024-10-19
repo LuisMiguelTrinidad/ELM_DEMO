@@ -1,30 +1,34 @@
 module GraficoPrueba exposing (..)
 
-import Html as H
+import Browser
 import Chart as C
 import Chart.Attributes as CA
-import Browser
-import Html exposing (Html)
+import Html as H exposing (Html)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
 
+
 type alias Model =
     {}
+
 
 init : Model
 init =
     {}
 
+
 type Msg
     = NoOp
+
 
 update : Msg -> Model -> Model
 update msg model =
     model
 
+
 view : Model -> Html Msg
 view model =
-    H.div [ class "w-96"]
+    H.div [ class "w-96" ]
         [ C.chart
             [ CA.height 300
             , CA.width 300
@@ -42,8 +46,6 @@ view model =
             ]
         ]
 
+
 main =
     Browser.sandbox { init = init, update = update, view = view }
-
-
-

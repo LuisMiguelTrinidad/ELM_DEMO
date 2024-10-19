@@ -1,20 +1,23 @@
-module Services.CsvDecoder exposing (parseCsv, Row)
+module Services.CsvDecoder exposing (Row, parseCsv)
 
 import Csv.Decode as Decode exposing (Decoder)
-type alias Row = { 
-    id : Int
-  , balance : Float
-  , amount : Float
-  , currency : String
-  , investmentType : String
-  , status : String
-  , modified : String
-  , tradeId : String
-  , instrumentSymbol : String
-  , instrumentName : String
-  , commission : String
-  , accountType : String
-  }
+
+
+type alias Row =
+    { id : Int
+    , balance : Float
+    , amount : Float
+    , currency : String
+    , investmentType : String
+    , status : String
+    , modified : String
+    , tradeId : String
+    , instrumentSymbol : String
+    , instrumentName : String
+    , commission : String
+    , accountType : String
+    }
+
 
 decoder : Decoder Row
 decoder =
@@ -33,15 +36,16 @@ decoder =
         |> Decode.pipeline (Decode.field "Account type" Decode.string)
 
 
-
-parseCsv: String -> List Row
+parseCsv : String -> List Row
 parseCsv csv =
-  let
-    parser: String -> Result Decode.Error (List Row)
-    parser data =  Decode.decodeCsv Decode.FieldNamesFromFirstRow decoder <|String.trim <|String.replace "\"" "" data
-  in
-  case parser csv of
-    Err _ ->
-      []
-    Ok rows -> 
-      rows
+    let
+        parser : String -> Result Decode.Error (List Row)
+        parser data =
+            Decode.decodeCsv Decode.FieldNamesFromFirstRow decoder <| String.trim <| String.replace "\"" "" data
+    in
+    case parser csv of
+        Err _ ->
+            []
+
+        Ok rows ->
+            rows
