@@ -1,22 +1,7 @@
-module Services.CsvDecoder exposing (Row, parseCsv)
+module Services.CsvDecoder exposing (parseCsv)
 
 import Csv.Decode as Decode exposing (Decoder)
-
-
-type alias Row =
-    { id : Int
-    , balance : Float
-    , amount : Float
-    , currency : String
-    , investmentType : String
-    , status : String
-    , modified : String
-    , tradeId : String
-    , instrumentSymbol : String
-    , instrumentName : String
-    , commission : String
-    , accountType : String
-    }
+import Types.Row exposing (Row)
 
 
 decoder : Decoder Row
@@ -46,6 +31,5 @@ parseCsv csv =
     case parser csv of
         Err _ ->
             []
-
         Ok rows ->
             rows

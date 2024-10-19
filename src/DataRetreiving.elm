@@ -3,16 +3,15 @@ module DataRetreiving exposing (..)
 import Browser
 import File exposing (File)
 import File.Select as Select
-import Html exposing (Html, p)
-import Html.Attributes 
-import Html.Events exposing (onClick)
+import Html exposing (Html)
 import Task
 import Csv.Decode as Decode exposing (Decoder)
-import Services.CsvDecoder exposing (parseCsv, Row)
-import Svg exposing (..)
-import Svg.Attributes exposing (..)
+
+import Services.CsvDecoder exposing (parseCsv)
+import Types.Row exposing (Row)
 
 import Components.UploadButton
+import Types.Row as Row
 
 type alias Transaction = {id: Int, balance: Float, amount: Float, transactionType: String, date: String, name: String}
 
@@ -72,7 +71,7 @@ view model =
     [] ->
       Components.UploadButton.uploadButton CsvRequested
     _ ->
-      p [ ] [ Html.text <| String.join "\n" (List.map (\x -> Debug.toString x) model.csv) ]
+      Html.p [ ] [ Html.text <| String.join "\n" (List.map (\x -> Row.toString x) model.csv) ]
 
 -- SUBSCRIPTIONS
 subscriptions : Model -> Sub Msg
