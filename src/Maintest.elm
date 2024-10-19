@@ -88,7 +88,6 @@ update msg model =
             in
             { model | filter = newFilters }
 
-
 tableMiddleRow : Entry -> Html Msg
 tableMiddleRow x =
     Html.tbody []
@@ -98,7 +97,6 @@ tableMiddleRow x =
             , Html.th [ class "p-4 text-left" ] [ Html.text <| String.fromInt <| x.year ]
             ]
         ]
-
 
 view : Model -> Html Msg
 view model =

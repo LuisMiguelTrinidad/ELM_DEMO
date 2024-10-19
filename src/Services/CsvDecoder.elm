@@ -2,7 +2,14 @@ module Services.CsvDecoder exposing (parseCsv)
 
 import Csv.Decode as Decode exposing (Decoder)
 import Types.Row exposing (Row)
+import Types.Date exposing (Date)
+import Types.Date as Date
 
+dateDecoder : Decoder Date
+dateDecoder =
+    Decode.string
+        |> Decode.andThen
+            (\str -> (Decode.succeed (Date.toDate str)))
 
 decoder : Decoder Row
 decoder =
@@ -13,7 +20,7 @@ decoder =
         |> Decode.pipeline (Decode.field "Currency" Decode.string)
         |> Decode.pipeline (Decode.field "Type" Decode.string)
         |> Decode.pipeline (Decode.field "Status" Decode.string)
-        |> Decode.pipeline (Decode.field "Modified" Decode.string)
+        |> Decode.pipeline (Decode.field "Modified" dateDecoder)
         |> Decode.pipeline (Decode.field "Trade Id" Decode.string)
         |> Decode.pipeline (Decode.field "Instrument Symbol" Decode.string)
         |> Decode.pipeline (Decode.field "Instrument Name" Decode.string)
@@ -26,10 +33,10 @@ parseCsv csv =
     let
         parser : String -> Result Decode.Error (List Row)
         parser data =
-            Decode.decodeCsv Decode.FieldNamesFromFirstRow decoder <| String.trim <| String.replace "\"" "" data
+            (Decode.decodeCsv Decode.FieldNamesFromFirstRow decoder <| String.trim <| String.replace "\"" "" data)
     in
     case parser csv of
         Err _ ->
             []
         Ok rows ->
-            rows
+            List.filter (\x -> x.investmentType /= "DEMO_TRANSFER") rows
