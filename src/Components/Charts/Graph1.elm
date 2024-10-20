@@ -26,10 +26,10 @@ graph1 data = C.chart [
       , C.yLabels [ ]
       , C.labelAt .max .max
             [ CA.alignMiddle, CA.color CA.pink, CA.fontSize 22 ]
-            [ H.text "Dinero generado"]
+            [ H.text "Earnings"]
       , C.labelAt .min .max
             [ CA.alignMiddle, CA.color CA.blue, CA.fontSize 22 ]
-            [ S.text "Numero de inversiones" ]
+            [ S.text "Number of investments" ]
       , C.bars [ CA.roundTop 0.25, CA.roundBottom 0.25 ] [
             C.bar .moneyEarned [  ],
             C.bar .transactionAmmount [  ]
