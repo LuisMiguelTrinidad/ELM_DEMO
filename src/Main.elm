@@ -59,10 +59,8 @@ update msg model =
           if number /= model.filter.column then
             sortByColumn number model.csv
           else
-            if model.filter.descending then
-              List.reverse model.csv
-            else
-              model.csv
+            List.reverse model.csv
+
       in
       if model.filter.column == number then
         ({ model | csv = sortedData, filter = {column=number, descending=not model.filter.descending} }, Cmd.none)

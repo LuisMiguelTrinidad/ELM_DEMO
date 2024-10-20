@@ -11,7 +11,6 @@ import Svg as S
 import Types.Row as Row
 
 import Services.GraphDataCleaner exposing (getGraph0Data)
-import Types.Date as Date
 
 graph0 : List Row.Row -> H.Html msg
 graph0 data = C.chart [ 
@@ -21,12 +20,12 @@ graph0 data = C.chart [
     ] [
 
         C.yTicks [ ]
-      , C.yLabels [ CA.pinned .max, CA.flip, CA.format (\x -> String.fromFloat (x/4) ) ]
-      , C.yLabels [ CA.format (\x -> String.fromFloat (10000 + x)) ]
-      , C.labelAt .max .max
+      , C.yLabels [ CA.pinned .max, CA.flip, CA.format (\x -> String.fromFloat (x/4) ++ " €") ]
+      , C.yLabels [ CA.format (\x -> String.fromFloat (10000 + x) ++ " €" ) ]
+      , C.labelAt .max (\x -> x.max + 200)
           [ CA.alignMiddle, CA.color "#ffccf9", CA.fontSize 22 ]
           [ H.text "Earnings per month"]
-      , C.labelAt .min .max
+      , C.labelAt .min (\x -> x.max + 200)
           [ CA.alignMiddle, CA.color "#ffcc7d", CA.fontSize 22 ]
           [ S.text "Total money" ]
 
