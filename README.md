@@ -1,12 +1,6 @@
 <a name="readme-top"></a>
 
-<!-- PROJECT SHIELDS -->
-
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![Apache 2.0 License][license-shield]][license-url]
+<h1 align="center">Project created with <a href="https://github.com/data-miner00/elm-vite-template">this template</a></h1>
 
 <!-- PROJECT LOGO -->
 <br />
@@ -31,76 +25,42 @@
   </p>
 </div>
 
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
-
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
 
 <!-- ![Template screenshot](/public/assets/screenshot.png) -->
 
-A simple and intuitive Elm template powered by Vite. Built in TailwindCSS and HMR. Focus on the application itself rather than all these low-level configuration stuffs.
+A simple webApp using Elm where you can load a csv and retrieve a interactive table and some graphs.
+<br>
 
-Incentives:
+<h2>Format</h2>
+<code>Id,Balance,Amount,Currency,Type,Status,Modified,Trade Id,Instrument Symbol,Instrument Name,Commission,Account type</code>
+<br>
+<code>"75311057400111","16172.09","4.66","EURd","TRADE","PROCESSED","2024-10-12 20:50:31","0015421d-0055-311e-0000-4e28000a8aa4_0015421d-0055-311e-0000-000081309791","ETH/USD","Ethereum / USD","",""</code>
 
-- Could not find intuitive Elm starter templates
-- The Elm development workflow is awkward
-- Want to try out Elmish architecture
-- Buitl this Elm template so I can use for other projects.
+<h2>Built with</h2>
+The language, packages and technologies used in this project
+<ul>
+  <li>Elm</li>
+  <li>terezka/elm-charts</li>
+  <li>BrianHicks/elm-csv</li>
+  <li>Vite</li>
+  <li>TailwindCss</li>
+</ul>
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-### Built With
-
-The technologies and tools used within this template.
-
-- Elm
-- Vite
-- TailwindCSS
-- JavaScript
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 
-## Getting Started
+<h2>Getting Started</p2>
 
-### Prerequisites
+<h3>Prerequisites<h3>
 
 The list of tools that is used when development.
 
 - npm
   ```sh
   npm install npm@latest -g
-  ```
-- Pnpm
-  ```sh
-  npm i -g pnpm
   ```
 - [Git](https://git-scm.com/downloads)
 - [Elm](https://elm-lang.org/)
@@ -111,7 +71,7 @@ To use this template for personal use or contribution, simply perform the follow
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/data-miner00/elm-vite-template.git
+   git clone https://github.com/LuisMiguelTrinidad/ELM_DEMO.git
    ```
 2. Install Node dependencies
    ```sh
@@ -121,39 +81,35 @@ To use this template for personal use or contribution, simply perform the follow
    ```sh
    npm up --latest
    ```
-4. Recommend to run tests to check if things are breaking
-   ```sh
-   npm test
-   ```
-5. Run formatter to format code
+4. Run formatter to format code
    ```sh
    npm format
    ```
-6. Review Elm code quality
+5. Review Elm code quality
    ```sh
    npm review
    ```
-7. Start dev server
+6. Start dev server
    ```sh
    npm dev
    ```
-8. Compile for production
+7. Compile for production
    ```sh
    npm build
    ```
-9. Preview production build
+8. Preview production build
    ```sh
    npm preview
    ```
-10. Start standalone Elm reactor
+9. Start standalone Elm reactor
     ```sh
     npm elm:dev
     ```
-11. Build standalone Elm code
+10. Build standalone Elm code
     ```sh
     npm elm:build
     ```
-12. Start interactive Elm shell
+11. Start interactive Elm shell
     ```sh
     npm repl
     ```
