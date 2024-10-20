@@ -1,4 +1,4 @@
-module Services.GraphDataCleaner exposing (getGraph0Data, Graph0Data)
+module Services.GraphDataCleaner exposing (..)
 
 import Types.Row as Row
 import Dict as Dict
@@ -33,4 +33,20 @@ getGraph0Data data =
                 amount = z, 
                 label = (Date.getMonthName date)++ " " ++ (String.fromInt date.year)})
 
+type alias Graph1Data = {company: String, transactionAmmount: Float, moneyEarned: Float}
+getGraph1Data : List Row.Row -> List Graph1Data
+getGraph1Data data = 
+    let
+        companiesToData : Dict.Dict String {transactionAmmount: Float, moneyEarned: Float}
+        companiesToData = 
+            List.foldl (\row acc -> 
+                case Dict.get row.instrumentSymbol acc of
+                    Just {transactionAmmount, moneyEarned} -> Dict.insert row.instrumentSymbol {transactionAmmount=transactionAmmount + 1, moneyEarned=row.amount + moneyEarned} acc
+                    Nothing -> Dict.insert row.instrumentSymbol {transactionAmmount=1, moneyEarned=row.amount} acc
+            ) Dict.empty data
+    in
+        companiesToData 
+            |> Dict.toList 
+            |> List.filter (\(_, {transactionAmmount, moneyEarned}) -> transactionAmmount >= 10)
+            |> List.map (\(company, {transactionAmmount, moneyEarned}) -> {company=company, transactionAmmount=transactionAmmount, moneyEarned=moneyEarned})
 

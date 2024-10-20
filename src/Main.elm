@@ -12,6 +12,7 @@ import Services.CsvDecoder exposing (parseCsv)
 import Components.UploadButton exposing (uploadButton)
 import Components.Table.Table exposing (investmentTable)
 import Components.Charts.Graph0 exposing (graph0)
+import Components.Charts.Graph1 exposing (graph1)
 
 import Types.Row as Row
 import Types.Date as Date
@@ -83,9 +84,13 @@ view model =
           investmentTable model.csv model.index model.filter,
           H.div [ HA.class "w-full justify-center pt-32 p-8 tracking-tighter"] [
             graph0 <| List.sortWith (\x y -> Date.compare x.modified y.modified)  model.csv
-            ]
+          ],
+          H.div [ HA.class "w-full justify-center pt-32 p-8 tracking-tighter"] [
+            graph1 model.csv
+          ]
         ]
       ]
+
 
 -- SUBSCRIPTIONS
 subscriptions : Model -> Sub Msg.Msg
