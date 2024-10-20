@@ -18,7 +18,6 @@ type alias Row =
     }
 
 toString: Row -> String
-toString r =
-    "{" ++ String.fromInt r.id ++ ", " ++ String.fromFloat r.balance ++ ", " ++ String.fromFloat r.amount ++ ", " ++ 
+toString r = "{" ++ String.fromInt r.id ++ ", " ++ String.fromFloat r.balance ++ ", " ++ String.fromFloat r.amount ++ ", " ++ 
     r.currency ++ ", " ++ r.investmentType ++ ", " ++ r.status ++ ", " ++ Date.toString r.modified ++ ", " ++ r.tradeId ++ ", " ++ 
     r.instrumentSymbol ++ ", " ++ r.instrumentName ++ ", " ++ r.commission ++ ", " ++ r.accountType ++ "}"

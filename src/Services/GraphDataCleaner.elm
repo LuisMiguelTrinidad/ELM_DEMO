@@ -18,7 +18,6 @@ getGraph0Data data =
                         Just {y, z} -> Dict.insert date {y=row.amount + y, z=row.balance} acc
                         Nothing -> Dict.insert date {y=row.amount, z=row.balance} acc
             ) Dict.empty data
-        
         monthstoBalanceList = monthstoBalance 
             |> Dict.toList 
         monthstoBalanceTypedList = List.map (\(date, {y,z}) -> ((Date.toDate date), {y=y,z=z})) monthstoBalanceList
