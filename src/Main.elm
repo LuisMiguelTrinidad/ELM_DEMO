@@ -3,13 +3,15 @@ module Main exposing (..)
 import Browser
 import File
 import File.Select
-import Html exposing (Html)
+import Html as H
+import Html.Attributes as HA
 import Task
 
 import Services.CsvDecoder exposing (parseCsv)
 
 import Components.UploadButton exposing (uploadButton)
 import Components.Table.Table exposing (investmentTable)
+import Components.Charts.Graph0 exposing (graph0)
 
 import Types.Row as Row
 import Types.Date as Date
@@ -23,7 +25,8 @@ main = Browser.element { init = init, view = view, update = update, subscription
 type alias Model = {
   csv: List Row.Row
   , filter: {column: Int, descending: Bool}
-  , index: Int} 
+  , index: Int
+  } 
 
 init : () -> (Model, Cmd Msg.Msg)
 init _ = (Model [] {column=3, descending=False} 0, Cmd.none)
@@ -69,13 +72,20 @@ update msg model =
         ({ model | index = number }, Cmd.none)
 
 -- VIEW
-view : Model -> Html Msg.Msg
+view : Model -> H.Html Msg.Msg
 view model =
   case model.csv of
     [] ->
-      uploadButton Msg.CsvRequested
+        uploadButton Msg.CsvRequested
     _ ->
-      investmentTable model.csv model.index model.filter
+      H.div [ HA.class "flex flex-col items-center justify-center"] [
+        H.div [ HA.class "items-center justify-center py-28 w-4/5"] [
+          investmentTable model.csv model.index model.filter,
+          H.div [ HA.class "w-full justify-center pt-32 p-8 tracking-tighter"] [
+            graph0 <| List.sortWith (\x y -> Date.compare x.modified y.modified)  model.csv
+            ]
+        ]
+      ]
 
 -- SUBSCRIPTIONS
 subscriptions : Model -> Sub Msg.Msg

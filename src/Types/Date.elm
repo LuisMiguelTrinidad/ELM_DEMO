@@ -1,4 +1,4 @@
-module Types.Date exposing (Date, toString, toDate, compare)
+module Types.Date exposing (..)
 
 type alias Date = {
     year: Int
@@ -57,5 +57,60 @@ compare date1 date2 =
                             other
                 other ->
                     other
+        other ->
+            other
+
+getMonthName : Date -> String
+getMonthName date =
+    case date.month of
+        1 -> "Jan"
+        2 -> "Feb"
+        3 -> "Mar"
+        4 -> "Apr"
+        5 -> "May"
+        6 -> "Jun"
+        7 -> "Jul"
+        8 -> "Aug"
+        9 -> "Sep"
+        10 -> "Oct"
+        11 -> "Nov"
+        12 -> "Dec"
+        _ -> "Invalid month"
+
+type alias ReducedDate = {
+    year: Int,
+    month: Int
+    }
+
+toReducedDate: Date -> ReducedDate
+toReducedDate date = ReducedDate date.year date.month
+
+reducedDateToString: ReducedDate -> String
+reducedDateToString reducedDate = fromReducedDate reducedDate |> toString
+-- Inverse methods
+fromReducedDate: ReducedDate -> Date
+fromReducedDate reducedDate =
+    { year = reducedDate.year
+    , month = reducedDate.month
+    , day = 1
+    , hour = 0
+    , minute = 0
+    , second = 0
+    }
+
+fromReducedDateString: String -> ReducedDate
+fromReducedDateString str =
+    let
+        parts = String.split "-" str
+    in
+    { year = List.head parts |> Maybe.withDefault "0" |> String.toInt |> Maybe.withDefault 0
+    , month = List.head (List.drop 1 parts) |> Maybe.withDefault "0" |> String.toInt |> Maybe.withDefault 0
+    }
+
+compareReducedDate: ReducedDate -> ReducedDate -> Order
+compareReducedDate reducedDate1 reducedDate2 =
+    case Basics.compare reducedDate1.year reducedDate2.year of
+        EQ ->
+            Basics.compare reducedDate1.month reducedDate2.month
         other ->
             other

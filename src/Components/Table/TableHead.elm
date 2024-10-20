@@ -45,6 +45,7 @@ tableHead filter =
                     H.th [ HA.class "px-6 py-3", HE.onClick <| Msg.SortBy index ] [ 
                         H.text header
                     ]
+
                 ) headers)
     ]
 
