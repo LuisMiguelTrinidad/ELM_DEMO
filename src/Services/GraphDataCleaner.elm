@@ -4,8 +4,10 @@ import Types.Row as Row
 import Dict as Dict
 import Types.Date as Date
 
-type alias Graph0Data = {x: Float, earnings: Float, amount: Float, label: String}
-getGraph0Data : List Row.Row -> List Graph0Data
+import Types.GraphTypes as GT
+
+
+getGraph0Data : List Row.Row -> List GT.Graph0Data
 getGraph0Data data = 
     let
         monthstoBalance : Dict.Dict String {y: Float, z: Float}
@@ -32,8 +34,7 @@ getGraph0Data data =
                 amount = z, 
                 label = (Date.getMonthName date)++ " " ++ (String.fromInt date.year)})
 
-type alias Graph1Data = {company: String, transactionAmmount: Float, moneyEarned: Float}
-getGraph1Data : List Row.Row -> List Graph1Data
+getGraph1Data : List Row.Row -> List GT.Graph1Data
 getGraph1Data data = 
     let
         companiesToData : Dict.Dict String {transactionAmmount: Float, moneyEarned: Float}

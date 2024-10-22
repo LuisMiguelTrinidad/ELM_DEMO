@@ -9,13 +9,16 @@ import Chart.Events as CE
 import Svg as S
 
 import Types.Row as Row
+import Types.Date as Date
+import Types.GraphTypes as GT 
 
 import Services.GraphDataCleaner exposing (getGraph1Data)
-import Types.Date as Date
 
 
 
-graph1 : List Row.Row -> H.Html msg
+
+
+graph1 : List GT.Graph1Data -> H.Html msg
 graph1 data = C.chart [ 
         CA.height 500
       , CA.width 1400 
@@ -33,7 +36,7 @@ graph1 data = C.chart [
       , C.bars [ CA.roundTop 0.25, CA.roundBottom 0.25 ] [
             C.bar .moneyEarned [  ],
             C.bar .transactionAmmount [  ]
-        ] (getGraph1Data data)
+        ] data
       , C.binLabels .company [ CA.moveDown 50 ]
       ]
 

@@ -2,7 +2,8 @@ module Components.UploadButton exposing (..)
 
 import Html as H 
 import Html.Attributes as HA
-import Html.Events exposing (onClick)
+import Html.Events as HE
+import Html.Events.Extra.Drag as HEED
 import Svg as S 
 import Svg.Attributes as SA 
 
@@ -36,7 +37,7 @@ uploadButton fileRequested =
                         H.text "CSV only" 
                     ]
                 ]
-                , H.input [ HA.id "dropzone-file", HA.type_ "file", HA.class "hidden", onClick fileRequested ] []
+                , H.input [ HA.id "dropzone-file", HA.type_ "file", HA.class "hidden", HE.onClick fileRequested] []
             ]
         ]
     ]

@@ -27,7 +27,7 @@ tableHead filter =
             else
                 S.svg [ SA.class "fill-slate-500 w-6 h-6 flex", SA.viewBox "0 -960 960 960"] [ 
                     S.path [ SA.d "m280-400 200-200 200 200H280Z" ] []
-                    ]
+                ]
     
     in
     H.thead [ HA.class "text-xl text-gray-700 uppercase bg-gray-50" ] [ 
@@ -42,8 +42,16 @@ tableHead filter =
                         ]
                     ]
                 else
-                    H.th [ HA.class "px-6 py-3", HE.onClick <| Msg.SortBy index ] [ 
-                        H.text header
+                    H.th [ HA.class "px-6 py-3", HE.onClick <| Msg.SortBy index ] [
+                        H.div [ HA.class "flex" ] [
+                            H.div [ HA.class "flex"] [
+                                H.text header
+                            ],
+                            S.svg [ SA.class "fill-white w-6 h-6 flex", SA.viewBox "0 -960 960 960"] [ 
+                                S.path [ SA.d "m280-400 200-200 200 200H280Z" ] []
+                            ]
+                        ]
+
                     ]
 
                 ) headers)
