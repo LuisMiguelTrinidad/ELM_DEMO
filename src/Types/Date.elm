@@ -103,7 +103,7 @@ fromReducedDateString str =
     let
         parts = String.split "-" str
     in
-    { year = List.head parts |> Maybe.withDefault "0" |> String.toInt |> Maybe.withDefault 0
+    { year = List.head parts |> Maybe.withDefault "0" |> String.toInt |> Maybe.withDefault 0 |> (\y -> modBy y 100)
     , month = List.head (List.drop 1 parts) |> Maybe.withDefault "0" |> String.toInt |> Maybe.withDefault 0
     }
 

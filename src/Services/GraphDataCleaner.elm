@@ -17,7 +17,7 @@ getGraph0Data data =
                     date = Date.toReducedDate row.modified |> Date.reducedDateToString
                 in
                     case Dict.get date acc of
-                        Just {y, z} -> Dict.insert date {y=row.amount + y, z=row.balance} acc
+                        Just {y} -> Dict.insert date {y=row.amount + y, z=row.balance} acc
                         Nothing -> Dict.insert date {y=row.amount, z=row.balance} acc
             ) Dict.empty data
         monthstoBalanceList = monthstoBalance 
@@ -47,6 +47,6 @@ getGraph1Data data =
     in
         companiesToData 
             |> Dict.toList 
-            |> List.filter (\(_, {transactionAmmount, moneyEarned}) -> transactionAmmount >= 20)
+            |> List.filter (\(_, {transactionAmmount}) -> transactionAmmount >= 20)
             |> List.map (\(company, {transactionAmmount, moneyEarned}) -> {company=company, transactionAmmount=transactionAmmount, moneyEarned=moneyEarned})
 
