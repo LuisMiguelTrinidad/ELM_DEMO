@@ -83,35 +83,35 @@ This are all useful commands
 
 1. Run formatter to format code
    ```sh
-   npm format
+   npm run format
    ```
 2. Review Elm code quality
    ```sh
-   npm review
+   npm run review
    ```
 3. Start dev server
    ```sh
-   npm dev
+   npm run dev
    ```
-4. Compile for production (You would have to enable cors)
+4. Compile for production (I have enabled cors by default)
    ```sh
-   npm build
+   npm run build
    ```
-5. Preview production build
+5. Preview production build (You must build before)
    ```sh
-   npm preview
+   npm run preview --cors
    ```
 6. Start standalone Elm reactor
     ```sh
-    npm elm:dev
+    npm run elm:dev
     ```
 7. Build standalone Elm code
     ```sh
-    npm elm:build
+    npm run elm:build
     ```
 8. Start interactive Elm shell
     ```sh
-    npm repl
+    npm run repl
     ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

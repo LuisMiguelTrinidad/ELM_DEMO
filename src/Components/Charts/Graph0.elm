@@ -41,11 +41,11 @@ graph0 data hoveringdata = C.chart [
             C.bar (\x ->  x.earnings*4) [ CA.gradient [ "#ffccf9", "#d79aff" ] ]
         ] data
       , C.series (\ab -> ab.x + 1) [ 
-            C.interpolated (\x -> x.amount - 10000) [ CA.color "#ffcc7d", CA.monotone ] [ CA.circle ] 
+            C.interpolated (\x -> x.amount - 10000) [ CA.color "#ffcc7d", CA.monotone, CA.opacity 0.2, CA.gradient [ "#ffcc7d", "#f79aff" ] ] [ CA.circle ] 
         ] data
       , C.binLabels .label [ CA.moveDown 50 ]
-      , C.each (List.map2 (\bar dot -> (bar, dot)) hoveringdata.bars hoveringdata.dots) <| \_ (bar, dot) ->
-            [ C.tooltip dot [ CA.onTop ] [] [ 
+      , C.each (List.map2 (\bar dot -> (bar, dot)) hoveringdata.bars hoveringdata.dots) <| \_ (bar, dot) -> [ 
+            C.tooltip dot [ CA.onTop ] [] [ 
                   H.div [ ] [ 
                         H.span [ HA.class "text-[#d79aff] font-bold"] [
                                 H.text ("Generated this month: ")
@@ -60,7 +60,7 @@ graph0 data hoveringdata = C.chart [
 
             ]
       ]
-    ]
+      ]
 
       
 

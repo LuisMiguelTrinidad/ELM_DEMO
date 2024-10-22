@@ -23,7 +23,10 @@ import Types.Row as Row
 import Types.Date as Date
 import Types.Msg as Msg
 import Types.GraphTypes as GT
+
+
 -- MAIN
+
 main : Program () Model Msg.Msg
 main = Browser.element { init = init, view = view, update = update, subscriptions = subscriptions}
 
@@ -105,3 +108,4 @@ view model =
 -- SUBSCRIPTIONS
 subscriptions : Model -> Sub Msg.Msg
 subscriptions _ = Sub.none
+

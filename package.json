@@ -1,7 +1,7 @@
 {
-  "name": "elmish",
+  "name": "LuisMiguelTrinidad",
   "version": "1.0.0",
-  "description": "A personalized Elm template powered by Vite",
+  "description": "A analysis tool for capital.com csv files",
   "main": "src/index.js",
   "scripts": {
     "postinstall": "elm-tooling install",
