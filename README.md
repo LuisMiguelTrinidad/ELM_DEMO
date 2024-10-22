@@ -99,7 +99,7 @@ This are all useful commands
    ```
 5. Preview production build (You must build before)
    ```sh
-   npm run preview --cors
+   npm run preview 
    ```
 6. Start standalone Elm reactor
     ```sh
