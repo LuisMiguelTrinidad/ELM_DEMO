@@ -1,4 +1,4 @@
-module Types.GraphTypes exposing (Graph0Data, Hovering0Data, Graph1Data)
+module Types.GraphTypes exposing (..)
 
 import Chart.Item as CI
 

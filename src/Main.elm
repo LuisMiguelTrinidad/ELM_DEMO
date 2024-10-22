@@ -5,10 +5,8 @@ import File
 import File.Select
 import Html as H
 import Html.Attributes as HA
-import Chart as C
-import Chart.Attributes as CA
 import Chart.Item as CI
-import Chart.Events as CE
+
 import Task
 
 import Services.CsvDecoder exposing (parseCsv)

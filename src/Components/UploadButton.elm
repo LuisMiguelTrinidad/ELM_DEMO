@@ -3,9 +3,8 @@ module Components.UploadButton exposing (..)
 import Html as H 
 import Html.Attributes as HA
 import Html.Events as HE
-import Html.Events.Extra.Drag as HEED
 import Svg as S 
-import Svg.Attributes as SA 
+import Svg.Attributes as SA
 
 
 uploadButton : msg -> H.Html msg

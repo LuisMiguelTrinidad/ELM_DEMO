@@ -8,11 +8,9 @@ import Chart.Item as CI
 import Chart.Events as CE
 import Svg as S
 
-import Types.Row as Row
 import Types.Msg as Msg
 import Types.GraphTypes as GT
 
-import Services.GraphDataCleaner exposing (getGraph0Data)
 
 
 
@@ -46,21 +44,21 @@ graph0 data hoveringdata = C.chart [
       , C.binLabels .label [ CA.moveDown 50 ]
       , C.each (List.map2 (\bar dot -> (bar, dot)) hoveringdata.bars hoveringdata.dots) <| \_ (bar, dot) -> [ 
             C.tooltip dot [ CA.onTop ] [] [ 
-                  H.div [ ] [ 
-                        H.span [ HA.class "text-[#d79aff] font-bold"] [
-                                H.text ("Generated this month: ")
-                        ]
-                        , H.text (String.fromFloat (toFloat(round(100 * (CI.getY bar)))/400)) 
-                        , H.br [] []
-                        , H.span [ HA.class "text-[#ffcc7d] font-bold"] [
-                                H.text ("Accumulated money: ")
-                        ]
-                        , H.text (String.fromFloat (10000 + CI.getY dot))
-                  ]
+                H.div [ ] [ 
+                    H.span [ HA.class "text-[#d79aff] font-bold"] [
+                            H.text ("Generated this month: ")
+                    ]
+                    , H.text (String.fromFloat (toFloat(round(100 * (CI.getY bar)))/400)) 
+                    , H.br [] []
+                    , H.span [ HA.class "text-[#ffcc7d] font-bold"] [
+                            H.text ("Accumulated money: ")
+                    ]
+                    , H.text (String.fromFloat (10000 + CI.getY dot))
+                ]
 
             ]
-      ]
-      ]
+        ]
+    ]
 
       
 
