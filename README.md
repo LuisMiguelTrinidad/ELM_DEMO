@@ -31,6 +31,10 @@
 
 A simple webApp using Elm where you can load a csv and retrieve a interactive table and some graphs.
 <br>
+<h2>Demo</h2>
+<a>https://elm-demo-1.onrender.com/<a>
+The page might take up to 30-45 minute to load (It's a free hosting site and it will shut off when there is no activity)
+<br>
 <h2>Format</h2>
 <code>Id,Balance,Amount,Currency,Type,Status,Modified,Trade Id,Instrument Symbol,Instrument Name,Commission,Account type</code>
 <br>
