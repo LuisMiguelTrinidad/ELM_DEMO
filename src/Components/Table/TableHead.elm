@@ -33,7 +33,7 @@ tableHead filter =
     H.thead [ HA.class "text-xl text-gray-700 uppercase bg-gray-50" ] [ 
         H.tr [] (List.indexedMap (\index header -> 
                 if index == filter.column then
-                    H.th [ HA.class "px-6 py-3 flex", HE.onClick <| Msg.SortBy index ] [ 
+                    H.th [ HA.class "px-6 py-3 flex hover:cursor-pointer", HE.onClick <| Msg.SortBy index ] [ 
                         H.div [ HA.class "flex"] [
                             H.text header
                         ],
@@ -42,7 +42,7 @@ tableHead filter =
                         ]
                     ]
                 else
-                    H.th [ HA.class "px-6 py-3", HE.onClick <| Msg.SortBy index ] [
+                    H.th [ HA.class "px-6 py-3 hover:cursor-pointer", HE.onClick <| Msg.SortBy index ] [
                         H.div [ HA.class "flex" ] [
                             H.div [ HA.class "flex"] [
                                 H.text header
