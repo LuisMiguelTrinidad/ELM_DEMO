@@ -35,7 +35,7 @@ graph0 data hoveringdata = C.chart [
       , C.labelAt .min (\x -> x.max + 200)
             [ CA.alignMiddle, CA.color "#ffcc7d", CA.fontSize 22 ]
             [ S.text "Total money" ]
-      , C.bars [ CA.roundTop 0.25, CA.roundBottom 0.25 ] [
+      , C.bars [ CA.roundTop 0.15, CA.roundBottom 0.15] [
             C.bar (\x ->  x.earnings*4) [ CA.gradient [ "#ffccf9", "#d79aff" ] ]
         ] data
       , C.series (\ab -> ab.x + 1) [ 

@@ -28,7 +28,7 @@ graph1 data hoveringdata = C.chart [
       , C.labelAt .min .max
             [ CA.alignMiddle, CA.color CA.blue, CA.fontSize 22 ]
             [ S.text "Earnings" ]
-      , C.bars [ CA.roundTop 0.25, CA.roundBottom 0.25 ] [
+      , C.bars [ CA.roundTop 0.15, CA.roundBottom 0.15, CA.spacing 0.02 ] [
             C.bar .moneyEarned [  ],
             C.bar .transactionAmmount [  ]
         ] data
@@ -49,13 +49,13 @@ graph1 data hoveringdata = C.chart [
                         , H.text (barSetData.company)
                   ]
                 , H.div [] [ 
-                        H.span [ HA.class "text-[#ea60df] font-bold"] [
+                        H.span [ HA.class "text-[#7b4dff] font-bold"] [
                                 H.text ("Dinero ganado: ")
                         ]
                         , H.text (String.fromFloat (toFloat(round(100 * (barSetData.moneyEarned)))/100) ++ " €")
                   ]
                 , H.div [] [
-                        H.span [ HA.class "text-[#7b4dff] font-bold"] [
+                        H.span [ HA.class "text-[#ea60df] font-bold"] [
                                 H.text ("Transacciones realizadas: ")
                         ]
                         , H.text ((String.fromFloat barSetData.transactionAmmount))
