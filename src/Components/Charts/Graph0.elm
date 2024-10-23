@@ -48,12 +48,12 @@ graph0 data hoveringdata = C.chart [
                     H.span [ HA.class "text-[#d79aff] font-bold"] [
                             H.text ("Generated this month: ")
                     ]
-                    , H.text (String.fromFloat (toFloat(round(100 * (CI.getY bar)))/400)) 
+                    , H.text (String.fromFloat (toFloat(round(100 * (CI.getY bar)))/400) ++ " €") 
                     , H.br [] []
                     , H.span [ HA.class "text-[#ffcc7d] font-bold"] [
                             H.text ("Accumulated money: ")
                     ]
-                    , H.text (String.fromFloat (10000 + CI.getY dot))
+                    , H.text (String.fromFloat (10000 + CI.getY dot) ++ " €")
                 ]
 
             ]
