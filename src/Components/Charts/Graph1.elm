@@ -17,6 +17,7 @@ graph1 data hoveringdata = C.chart [
       , CA.width 1400 
       , CA.margin { top = 40, bottom = 40, left = 10, right = 10 }
       , CE.onMouseMove Msg.OnHoverG1 (CE.getNearest CI.bins)
+      , CE.onMouseLeave (Msg.OnHoverG1 [])
     ] [
         C.yTicks [ ]
       , C.yLabels [ CA.pinned .max, CA.flip, CA.format (\x -> String.fromFloat x ++ " €" ) ]
