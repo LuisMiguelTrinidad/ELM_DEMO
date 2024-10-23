@@ -47,6 +47,6 @@ getGraph1Data data =
     in
         companiesToData 
             |> Dict.toList 
-            |> List.filter (\(_, {transactionAmmount}) -> transactionAmmount >= 20)
+            |> List.filter (\(_, {transactionAmmount, moneyEarned}) -> transactionAmmount >= 20 || abs moneyEarned > 30)
             |> List.map (\(company, {transactionAmmount, moneyEarned}) -> {company=company, transactionAmmount=transactionAmmount, moneyEarned=moneyEarned})
 
