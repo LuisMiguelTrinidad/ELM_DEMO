@@ -7,6 +7,7 @@ import Chart.Attributes as CA
 import Chart.Item as CI
 import Chart.Events as CE
 import Svg as S
+import Svg.Attributes as SA
 
 import Types.GraphTypes as GT 
 import Types.Msg as Msg
@@ -23,14 +24,14 @@ graph1 data hoveringdata = C.chart [
       , C.yLabels [ CA.pinned .max, CA.flip, CA.format (\x -> String.fromFloat x ++ " €" ) ]
       , C.yLabels [ ]
       , C.labelAt .max .max
-            [ CA.alignMiddle, CA.color CA.pink, CA.fontSize 22 ]
+            [ CA.alignMiddle, CA.color "#FDBFA1", CA.fontSize 22 ]
             [ H.text "Number of investments"]
       , C.labelAt .min .max
-            [ CA.alignMiddle, CA.color CA.blue, CA.fontSize 22 ]
+            [ CA.alignMiddle, CA.color "#EBB3FC" ,CA.fontSize 22 ]
             [ S.text "Earnings" ]
       , C.bars [ CA.roundTop 0.15, CA.roundBottom 0.15, CA.spacing 0.02 ] [
-            C.bar .moneyEarned [  ],
-            C.bar .transactionAmmount [  ]
+            C.bar .moneyEarned [ CA.gradient [ "#ffccf9", "#d79aff" ] ],
+            C.bar .transactionAmmount [ CA.gradient [ "#ffcc7d", "#FBB1C4" ] ]
         ] data
       , C.binLabels .company [ CA.moveDown 50 ]
 
@@ -49,13 +50,13 @@ graph1 data hoveringdata = C.chart [
                         , H.text (barSetData.company)
                   ]
                 , H.div [] [ 
-                        H.span [ HA.class "text-[#7b4dff] font-bold"] [
+                        H.span [ HA.class "text-[#EBB3FC] font-bold"] [
                                 H.text ("Dinero ganado: ")
                         ]
                         , H.text (String.fromFloat (toFloat(round(100 * (barSetData.moneyEarned)))/100) ++ " €")
                   ]
                 , H.div [] [
-                        H.span [ HA.class "text-[#ea60df] font-bold"] [
+                        H.span [ HA.class "text-[#FDBFA1] font-bold"] [
                                 H.text ("Transacciones realizadas: ")
                         ]
                         , H.text ((String.fromFloat barSetData.transactionAmmount))
