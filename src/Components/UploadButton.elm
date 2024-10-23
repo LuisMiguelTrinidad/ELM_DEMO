@@ -9,7 +9,7 @@ import Svg.Attributes as SA
 
 uploadButton : msg -> H.Html msg
 uploadButton fileRequested =   
-    H.div [ HA.class "flex items-center justify-center h-dvh w-dvw"] [
+    H.div [ HA.class "flex items-center justify-center h-dvh w-dvw bg-svgImage"] [
         H.div [ HA.class "flex w-1/3" ] [ 
             H.label [ HA.for "dropzone-file", HA.class """flex flex-col items-center justify-center w-full h-64 border-2 
                 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 """ ] [ 
