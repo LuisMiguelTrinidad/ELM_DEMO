@@ -10,3 +10,5 @@ type alias Hovering0Data = {
     }
 
 type alias Graph1Data = {company: String, transactionAmmount: Float, moneyEarned: Float}
+
+type alias Hovering1Data = List (CI.Many Graph1Data CI.Any)

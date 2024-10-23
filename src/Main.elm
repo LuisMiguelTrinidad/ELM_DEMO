@@ -35,7 +35,7 @@ type alias Model = {
     , index: Int
     , graph0HoveringDatabars: List (CI.One GT.Graph0Data CI.Bar)
     , graph0HoveringDatadots: List (CI.One GT.Graph0Data CI.Dot)
-    , graph1HoveringData: List (CI.One GT.Graph1Data CI.Bar)
+    , graph1HoveringData: GT.Hovering1Data
     } 
 
 init : () -> (Model, Cmd Msg.Msg)
@@ -97,7 +97,9 @@ view model =
                             ) (GT.Hovering0Data model.graph0HoveringDatabars model.graph0HoveringDatadots)
                     ],
                     H.div [ HA.class "w-full justify-center pt-32 p-8 tracking-tighter"] [
-                        graph1 (GDC.getGraph1Data model.csv)
+                        graph1 (
+                            GDC.getGraph1Data model.csv
+                            ) (model.graph1HoveringData)
                     ]
                 ]
             ]

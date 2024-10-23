@@ -8,21 +8,15 @@ import Chart.Item as CI
 import Chart.Events as CE
 import Svg as S
 
-import Types.Row as Row
-import Types.Date as Date
 import Types.GraphTypes as GT 
+import Types.Msg as Msg
 
-import Services.GraphDataCleaner exposing (getGraph1Data)
-
-
-
-
-
-graph1 : List GT.Graph1Data -> H.Html msg
-graph1 data = C.chart [ 
+graph1 : List GT.Graph1Data -> GT.Hovering1Data -> H.Html Msg.Msg
+graph1 data hoveringdata = C.chart [ 
         CA.height 500
       , CA.width 1400 
       , CA.margin { top = 40, bottom = 40, left = 10, right = 10 }
+      , CE.onMouseMove Msg.OnHoverG1 (CE.getNearest CI.bins)
     ] [
         C.yTicks [ ]
       , C.yLabels [ CA.pinned .max, CA.flip, CA.format (\x -> String.fromFloat x ++ " €" ) ]
@@ -38,6 +32,35 @@ graph1 data = C.chart [
             C.bar .transactionAmmount [  ]
         ] data
       , C.binLabels .company [ CA.moveDown 50 ]
+
+      , C.each hoveringdata <| \p item ->
+            let
+                  barSetData = 
+                              case List.head (CI.getDatas item) of
+                                      Just info -> info
+                                      Nothing -> {company = "", transactionAmmount = 0, moneyEarned = 0}
+            in
+            [ C.tooltip item [ CA.onTop ] [] [ 
+                  H.div [] [ 
+                        H.span [ HA.class "font-bold"] [
+                                H.text ("Compañía: ")
+                        ]
+                        , H.text (barSetData.company)
+                  ]
+                , H.div [] [ 
+                        H.span [ HA.class "text-[#ea60df] font-bold"] [
+                                H.text ("Dinero ganado: ")
+                        ]
+                        , H.text (String.fromFloat (toFloat(round(100 * (barSetData.moneyEarned)))/100) ++ " €")
+                  ]
+                , H.div [] [
+                        H.span [ HA.class "text-[#7b4dff] font-bold"] [
+                                H.text ("Transacciones realizadas: ")
+                        ]
+                        , H.text ((String.fromFloat barSetData.transactionAmmount))
+                    ]
+                ] 
+            ]
       ]
 
       

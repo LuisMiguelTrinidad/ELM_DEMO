@@ -14,4 +14,4 @@ type Msg =
     | SortBy Int
     | ChangeIndex Int
     | OnHoverG0 (List (CI.One GT.Graph0Data CI.Bar)) (List (CI.One GT.Graph0Data CI.Dot))
-    | OnHoverG1 (List (CI.One GT.Graph1Data CI.Bar))
+    | OnHoverG1 GT.Hovering1Data
