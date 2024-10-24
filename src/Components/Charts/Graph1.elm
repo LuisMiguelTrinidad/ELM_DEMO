@@ -7,36 +7,35 @@ import Chart.Attributes as CA
 import Chart.Item as CI
 import Chart.Events as CE
 import Svg as S
-import Svg.Attributes as SA
 
 import Types.GraphTypes as GT 
 import Types.Msg as Msg
 
 graph1 : List GT.Graph1Data -> GT.Hovering1Data -> H.Html Msg.Msg
-graph1 data hoveringdata = H.div [HA.class "p-24 bg-white rounded-lg"] [
+graph1 data hoveringdata = H.div [ HA.class "p-12 bg-white rounded-lg" ] [
         C.chart [ 
-            CA.height 500
-        , CA.width 1400 
-        , CA.margin { top = 40, bottom = 40, left = 10, right = 10 }
-        , CE.onMouseMove Msg.OnHoverG1 (CE.getNearest CI.bins)
-        , CE.onMouseLeave (Msg.OnHoverG1 [])
+            CA.height 400
+            , CA.width 1200 
+            , CA.margin { top = 10, bottom = 10, left = 10, right = 10 }
+            , CE.onMouseMove Msg.OnHoverG1 (CE.getNearest CI.bins)
+            , CE.onMouseLeave (Msg.OnHoverG1 [])
         ] [
             C.yTicks [ ]
-        , C.yLabels [ CA.pinned .max, CA.flip, CA.format (\x -> String.fromFloat x ++ " €" ) ]
-        , C.yLabels [ ]
+        , C.yLabels [ CA.pinned .max, CA.flip, CA.format (\x -> String.fromFloat x ), CA.fontSize 20 ]
+        , C.yLabels [ CA.format (\x -> String.fromFloat x ++ " €" ), CA.fontSize 20]
         , C.labelAt .max .max
-                [ CA.alignMiddle, CA.color "#FDBFA1", CA.fontSize 22 ]
+                [ CA.alignRight, CA.color "#d79aff", CA.fontSize 28 ]
                 [ H.text "Nº of investments"]
         , C.labelAt .min .max
-                [ CA.alignMiddle, CA.color "#EBB3FC" ,CA.fontSize 22 ]
+                [ CA.alignLeft, CA.color "#FDBFA1" ,CA.fontSize 28 ]
                 [ S.text "Earnings" ]
         , C.bars [ CA.roundTop 0.15, CA.roundBottom 0.15, CA.spacing 0.02 ] [
-                C.bar .moneyEarned [ CA.gradient [ "#ffccf9", "#d79aff" ] ],
-                C.bar .transactionAmmount [ CA.gradient [ "#ffcc7d", "#FBB1C4" ] ]
+                C.bar .moneyEarned [ CA.gradient [ "#ffcc7d", "#FBB1C4" ] ],
+                C.bar .transactionAmmount [ CA.gradient [ "#ffccf9", "#d79aff" ] ]
             ] data
-        , C.binLabels .company [ CA.moveDown 150]
+        , C.binLabels .company [ CA.moveDown 120, CA.fontSize 20, CA.rotate 45]
 
-        , C.each hoveringdata <| \p item ->
+        , C.each hoveringdata <| \_ item ->
                 let
                     barSetData = 
                                 case List.head (CI.getDatas item) of
@@ -51,13 +50,13 @@ graph1 data hoveringdata = H.div [HA.class "p-24 bg-white rounded-lg"] [
                             , H.text (barSetData.company)
                     ]
                     , H.div [] [ 
-                            H.span [ HA.class "text-[#EBB3FC] font-bold"] [
+                            H.span [ HA.class "text-[#FDBFA1] font-bold"] [
                                     H.text ("Dinero ganado: ")
                             ]
                             , H.text (String.fromFloat (toFloat(round(100 * (barSetData.moneyEarned)))/100) ++ " €")
                     ]
                     , H.div [] [
-                            H.span [ HA.class "text-[#FDBFA1] font-bold"] [
+                            H.span [ HA.class "text-[#EBB3FC] font-bold"] [
                                     H.text ("Transacciones realizadas: ")
                             ]
                             , H.text ((String.fromFloat barSetData.transactionAmmount))

@@ -18,7 +18,7 @@ tableNavLi index total =
                 List.range (index-2) (index+2)
     in
     (if index /= 0 then
-        [ H.li [ HA.class """flex items-center  px-3 ms text-gray-500 bg-white border border-gray-300 
+        [ H.li [ HA.class """flex items-center px-3 text-gray-500 bg-white border border-gray-300 
                 hover:bg-gray-100 hover:text-gray-700 rounded-s-xl hover:cursor-pointer"""
                 ,HE.onClick (Msg.ChangeIndex (index - 1))] [
             H.text <| "Previous"

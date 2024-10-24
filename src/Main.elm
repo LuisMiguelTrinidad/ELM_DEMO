@@ -91,8 +91,8 @@ view model =
             H.div [ HA.class "items-center justify-center bg-svgImage pt-8"] [
                 H.div [ HA.class "items-center justify-center"] [
                     investmentTable model.csv model.index model.filter,
-                    H.div [ HA.class "p-8 space-y-8" ] [
-                        H.div [ HA.class "w-full justify-center p-4 tracking-tighter bg-gray-400 bg-opacity-20 backdrop-blur  rounded-3xl"] [
+                    H.div [ HA.class "p-8 space-x-8 flex" ] [
+                        H.div [ HA.class "w-full justify-center p-4 tracking-tighter bg-gray-400 bg-opacity-20 backdrop-blur rounded-3xl"] [
                             graph0 (
                                 GDC.getGraph0Data (List.sortWith (\x y -> Date.compare x.modified y.modified)  model.csv)
                                 ) (GT.Hovering0Data model.graph0HoveringDatabars model.graph0HoveringDatadots)

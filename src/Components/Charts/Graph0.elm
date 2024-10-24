@@ -15,11 +15,11 @@ import Types.GraphTypes as GT
 
 
 graph0 : List GT.Graph0Data -> GT.Hovering0Data -> H.Html Msg.Msg
-graph0 data hoveringdata = H.div [HA.class "p-24 bg-white rounded-lg"] [
+graph0 data hoveringdata = H.div [HA.class "p-12 bg-white rounded-lg"] [
     C.chart [ 
-            CA.height 500
-            , CA.width 1400 
-            , CA.margin { top = 40, bottom = 40, left = 10, right = 10 }
+            CA.height 400
+            , CA.width 1200 
+            , CA.margin { top = 10, bottom = 10, left = 10, right = 10 }
             , CE.onMouseLeave (Msg.OnHoverG0 [] [])
             , CE.on "mousemove" <|
                 CE.map2 Msg.OnHoverG0
@@ -27,21 +27,22 @@ graph0 data hoveringdata = H.div [HA.class "p-24 bg-white rounded-lg"] [
                     (CE.getNearestX CI.dots)
         ] [
             C.yTicks [ ]
-        , C.yLabels [ CA.pinned .max, CA.flip, CA.format (\x -> String.fromFloat (x/4) ++ " €") ]
-        , C.yLabels [ CA.format (\x -> String.fromFloat (10000 + x) ++ " €" ) ]
-        , C.labelAt .max (\x -> x.max + 200)
-                [ CA.alignMiddle, CA.color "#ffccf9", CA.fontSize 22 ]
+        , C.yLabels [ CA.pinned .max, CA.flip, CA.format (\x -> String.fromFloat (x/4) ++ " €"), CA.fontSize 20]
+        , C.yLabels [ CA.format (\x -> String.fromFloat (10000 + x) ++ " €" ), CA.fontSize 20]
+        , C.labelAt (\x -> x.max) (\x -> x.max + 500)
+                [ CA.alignRight, CA.color "#d79aff", CA.fontSize 28 ]
                 [ H.text "Earnings per month"]
-        , C.labelAt .min (\x -> x.max + 200)
-                [ CA.alignMiddle, CA.color "#ffcc7d", CA.fontSize 22 ]
+        , C.labelAt (\x -> x.min) (\x -> x.max + 500)
+                [ CA.alignLeft, CA.color "#ffcc7d", CA.fontSize 28 ]
                 [ S.text "Total money" ]
-        , C.bars [ CA.roundTop 0.15, CA.roundBottom 0.1] [
+        , C.bars [ CA.roundTop 0.15, CA.roundBottom 0.15, CA.margin 0.03] [
                 C.bar (\x ->  x.earnings*4) [ CA.gradient [ "#ffccf9", "#d79aff" ] ]
             ] data
         , C.series (\ab -> ab.x + 1) [ 
                 C.interpolated (\x -> x.amount - 10000) [ CA.color "#ffcc7d", CA.monotone, CA.opacity 0.2, CA.gradient [ "#ffcc7d", "#f79aff" ] ] [ CA.circle ] 
             ] data
-        , C.binLabels .label [ CA.moveDown 50 ]
+
+        , C.binLabels .label [ CA.moveDown 50 , CA.fontSize 20, CA.rotate 45]
         , C.each (List.map2 (\bar dot -> (bar, dot)) hoveringdata.bars hoveringdata.dots) <| \_ (bar, dot) -> [ 
                 C.tooltip dot [ CA.onTop ] [] [ 
                     H.div [ ] [ 
