@@ -88,19 +88,22 @@ view model =
         [] ->
             uploadButton Msg.CsvRequested
         _ ->
-            H.div [ HA.class "flex flex-col items-center justify-center"] [
-                H.div [ HA.class "items-center justify-center py-28 w-4/5"] [
+            H.div [ HA.class "items-center justify-center bg-svgImage pt-8"] [
+                H.div [ HA.class "items-center justify-center"] [
                     investmentTable model.csv model.index model.filter,
-                    H.div [ HA.class "w-full justify-center pt-32 p-8 tracking-tighter"] [
-                        graph0 (
-                            GDC.getGraph0Data (List.sortWith (\x y -> Date.compare x.modified y.modified)  model.csv)
-                            ) (GT.Hovering0Data model.graph0HoveringDatabars model.graph0HoveringDatadots)
-                    ],
-                    H.div [ HA.class "w-full justify-center pt-32 p-8 tracking-tighter"] [
-                        graph1 (
-                            GDC.getGraph1Data model.csv
-                            ) (model.graph1HoveringData)
+                    H.div [ HA.class "p-8 space-y-8" ] [
+                        H.div [ HA.class "w-full justify-center p-4 tracking-tighter bg-gray-400 bg-opacity-20 backdrop-blur  rounded-3xl"] [
+                            graph0 (
+                                GDC.getGraph0Data (List.sortWith (\x y -> Date.compare x.modified y.modified)  model.csv)
+                                ) (GT.Hovering0Data model.graph0HoveringDatabars model.graph0HoveringDatadots)
+                        ],
+                        H.div [ HA.class "w-full justify-center p-4 tracking-tighter bg-gray-400 bg-opacity-20 backdrop-blur rounded-3xl"] [
+                            graph1 (
+                                GDC.getGraph1Data model.csv
+                                ) (model.graph1HoveringData)
+                        ]
                     ]
+
                 ]
             ]
 

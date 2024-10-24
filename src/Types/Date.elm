@@ -114,3 +114,4 @@ compareReducedDate reducedDate1 reducedDate2 =
             Basics.compare reducedDate1.month reducedDate2.month
         other ->
             other
+

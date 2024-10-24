@@ -15,8 +15,8 @@ investmentTable data index filter =
     let
         sortedData = List.drop (10*index) data |> List.take 10
     in
-        H.div [] [
-                H.table [ HA.class "text-left text-gray-500 w-full "] [ 
+        H.div [ HA.class "bg-gray-400 bg-opacity-20 backdrop-blur p-8 rounded-3xl m-8"] [
+                H.table [ HA.class "text-left text-gray-500 w-full"] [ 
                     tableHead filter
                     ,tableBody sortedData
                 ]
