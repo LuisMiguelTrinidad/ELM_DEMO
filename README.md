@@ -5,24 +5,9 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="/">
+  <a href="https://github.com/data-miner00/elm-vite-template">
     <img src="public/assets/elm-vite-tailwind.png" />
   </a>
-
-  <h3 align="center">Elm Vite Template</h3>
-
-  <p align="center">
-    Minimalistic Elm Template powered by Vite!
-    <br />
-    <a href="https://elm-vite-template.vercel.app"><strong>View Demo »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/data-miner00/elm-vite-template">Explore the docs</a>
-    ·
-    <a href="https://github.com/data-miner00/elm-vite-template/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/data-miner00/elm-vite-template/issues">Request Feature</a>
-  </p>
 </div>
 
 <!-- ABOUT THE PROJECT -->
