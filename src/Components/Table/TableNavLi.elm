@@ -12,7 +12,7 @@ tableNavLi index total =
         navIndexes = 
             if index<=1 then
                 List.range 0 4
-            else if (total//10 + 1) - index <= 1 then
+            else if (total//10) - index <= 1 then
                 List.range ((total//10)-4) (total//10)
             else
                 List.range (index-2) (index+2)
