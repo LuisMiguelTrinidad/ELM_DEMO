@@ -10,7 +10,7 @@ import Components.Table.Tablebody exposing (tableBody)
 import Types.Row exposing (Row)
 import Types.Msg as Msg
 
-investmentTable : List Row -> Int -> {column: Int, descending: Bool} ->Html Msg.Msg
+investmentTable : List Row -> Int -> {column: Int, descending: Bool} -> Html Msg.Msg
 investmentTable data index filter = 
     let
         sortedData = List.drop (10*index) data |> List.take 10
@@ -22,7 +22,6 @@ investmentTable data index filter =
                     ,tableBody sortedData
                 ]
             ]
-            , tableNav index (List.length data)
-
-            ]
+          , tableNav index (List.length data)
+        ]
     

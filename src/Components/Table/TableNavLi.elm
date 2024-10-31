@@ -17,28 +17,36 @@ tableNavLi index total =
             else
                 List.range (index-2) (index+2)
     in
-    (if index /= 0 then
-        [ H.li [ HA.class """flex items-center px-3 text-gray-500 bg-white border border-gray-300 
-                hover:bg-gray-100 hover:text-gray-700 rounded-s-xl hover:cursor-pointer"""
-                ,HE.onClick (Msg.ChangeIndex (index - 1))] [
-            H.text <| "Previous"
-        ]
-        ]
-    else
-        []) ++
-    (List.map (\i -> 
-        H.li [ HA.class """flex items-center px-3 text-gray-500 bg-white border border-gray-300 
-            hover:bg-gray-100 hover:text-gray-700 hover:cursor-pointer"""
-            ,HE.onClick (Msg.ChangeIndex i)] [
-            H.text <| String.fromInt i
-        ]
-    ) navIndexes) ++
-    (if index /= ((total + 1) // 10) then
-        [ H.li [ HA.class """flex items-center px-3 text-gray-500 bg-white border border-gray-300 
-                hover:bg-gray-100 hover:text-gray-700 rounded-e-xl hover:cursor-pointer """
-                ,HE.onClick (Msg.ChangeIndex (index + 1))] [
-            H.text <| "Next"
-        ]
-        ]
-    else
-        [])
+    (
+        if index /= 0 then
+            [ 
+                H.li [ HA.class "flex items-center px-3 hover:bg-gray-100 hover:text-gray-700 rounded-s-lg hover:cursor-pointer"
+              , HE.onClick (Msg.ChangeIndex (index - 1))] [
+                    H.text "Previous"
+                ]
+            ]
+        else
+            []
+    ) 
+    ++
+    (
+        List.map (\i -> 
+            H.li [ HA.class "flex items-center px-3 hover:bg-gray-100 hover:text-gray-700 rounded-lg hover:cursor-pointer"
+                , HE.onClick (Msg.ChangeIndex i)] [
+                    H.text (String.fromInt i)
+                ]
+        ) 
+        navIndexes
+    ) 
+    ++
+    (
+        if index /= ((total + 1) // 10) then
+            [ 
+                H.li [ HA.class "flex items-center px-3 hover:bg-gray-100 hover:text-gray-700 rounded-e-lg hover:cursor-pointer"
+              , HE.onClick (Msg.ChangeIndex (index + 1))] [
+                    H.text "Next"
+                ]
+            ]
+        else
+            []
+    )
